@@ -6,13 +6,13 @@ using PhoneCatalog.Models.Db;
 
 namespace PhoneCatalog.Services
 {
-    public class PhoneCatalogService
+    public class SubscriberService
     {
         CatalogEntities phoneCatalogEntities = new CatalogEntities();
 
-        public void InsertSubscriber(string Surname,string FirstName, string MiddleName,DateTime BDay,string Phone)
+        public void InsertSubscriber(string Surname, string FirstName, string MiddleName, string Phone)
         {
-            Subscriber subscriber = new Subscriber() { Surname = Surname, FirstName = FirstName, MiddleName = MiddleName, BDay = BDay, Phone = Phone };
+            Subscriber subscriber = new Subscriber() { Surname = Surname, FirstName = FirstName, MiddleName = MiddleName, Phone = Phone };
             phoneCatalogEntities.Subscribers.Add(subscriber);
             phoneCatalogEntities.SaveChanges();
         }
@@ -22,7 +22,7 @@ namespace PhoneCatalog.Services
         }
         public void DeleteSubscriberById(int Id)
         {
-            var subscriber = new Subscriber(){ Id=Id};
+            var subscriber = new Subscriber() { Id = Id };
             phoneCatalogEntities.Subscribers.Attach(subscriber);
             phoneCatalogEntities.Subscribers.Remove(subscriber);
             phoneCatalogEntities.SaveChanges();
